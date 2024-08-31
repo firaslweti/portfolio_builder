@@ -20,4 +20,4 @@ This is a portfolio website built using PHP. The website showcases various web d
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/php-portfolio.git
+   git clone https://github.com/yourusername/portfilio_builder.git
