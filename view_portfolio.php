@@ -23,123 +23,139 @@ $projects = explode(',', $portfolio['projects']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($portfolio['title']); ?> - Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #121212;
-            color: #e0e0e0;
-            overflow-x: hidden;
+            background-color: #ffffff;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #1e1e1e;
-            padding: 20px 40px;
-            color: #bb86fc;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+            background-color: #000000;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
         }
 
         .header h1 {
-            font-size: 2rem;
             margin: 0;
+            font-size: 2.5rem;
+            font-weight: normal;
+        }
+
+        nav {
+            margin-top: 20px;
         }
 
         nav a {
+            color: #ffffff;
             text-decoration: none;
-            color: #bb86fc;
-            font-weight: bold;
-            margin-left: 30px;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
+            margin: 0 15px;
+            font-size: 1rem;
+            transition: color 0.3s;
         }
 
         nav a:hover {
-            color: #ffffff;
+            color: #bb86fc;
         }
 
         .hero {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            min-height: 100vh;
-            background: linear-gradient(to bottom, #1e1e1e, black);
+            background-color: #f0f0f0;
+            padding: 60px 0;
             text-align: center;
-            padding: 40px;
         }
 
         .hero img {
             border-radius: 50%;
-            border: solid 4px #bb86fc;
-            width: 200px;
-            height: 200px;
+            width: 150px;
+            height: 150px;
             margin-bottom: 20px;
         }
 
         .hero h2 {
-            color: white;
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin: 20px 0;
+            color: #000000;
         }
 
-        .button {
+        .hero .button {
+            background-color: #000000;
+            color: #ffffff;
             text-decoration: none;
-            border: solid 2px #bb86fc;
             padding: 10px 20px;
-            color: white;
-            font-size: 1.1rem;
             border-radius: 5px;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            display: inline-block;
+            transition: background-color 0.3s;
         }
 
-        .button:hover {
+        .hero .button:hover {
             background-color: #bb86fc;
-            color: #1e1e1e;
         }
 
         .section {
-            padding: 60px 40px;
-            background-color: #181818;
+            padding: 60px 0;
             text-align: center;
         }
 
         .section h2 {
-            color: #bb86fc;
-            margin-bottom: 30px;
-            font-size: 2.2rem;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #333333;
             text-transform: uppercase;
             letter-spacing: 1.5px;
         }
 
+        .section .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
         .card {
-            background-color: #1e1e1e;
-            padding: 30px;
+            background-color: #ffffff;
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.5);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
         }
 
         .card p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #e0e0e0;
+            font-size: 1rem;
+            margin: 0;
+            color: #666666;
         }
 
-        .projects .card,
-        .services .card {
-            flex: 1 1 calc(33% - 20px);
-            margin: 20px 10px;
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .flex-container .card {
+            flex: 1 1 calc(33% - 40px);
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
         }
 
         .gallery img {
-            width: 100%;
+            width: calc(33% - 20px);
             border-radius: 10px;
-            margin: 10px 0;
             transition: transform 0.3s ease;
         }
 
@@ -148,17 +164,22 @@ $projects = explode(',', $portfolio['projects']);
         }
 
         @media (max-width: 768px) {
+            .flex-container .card, .gallery img {
+                flex: 1 1 calc(100% - 20px);
+                width: 100%;
+            }
+
             .hero img {
-                width: 150px;
-                height: 150px;
+                width: 100px;
+                height: 100px;
             }
 
             .hero h2 {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
 
             .hero .button {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -177,46 +198,54 @@ $projects = explode(',', $portfolio['projects']);
 </div>
 
 <section id="home" class="hero">
-    <img src='uploads/<?php echo htmlspecialchars($portfolio['about_image']); ?>' alt='About Image'>
-    <h2><?php echo htmlspecialchars($portfolio['title']); ?></h2>
-    <a href='uploads/<?php echo htmlspecialchars($portfolio['cv_file']); ?>' class="button" download>Download CV</a>
+    <div class="container">
+        <img src='uploads/<?php echo htmlspecialchars($portfolio['about_image']); ?>' alt='About Image'>
+        <h2><?php echo htmlspecialchars($portfolio['title']); ?></h2>
+        <a href='uploads/<?php echo htmlspecialchars($portfolio['cv_file']); ?>' class="button" download>Download CV</a>
+    </div>
 </section>
 
 <section id="about" class="section">
-    <h2>About</h2>
-    <div class="card">
-        <p><?php echo htmlspecialchars($portfolio['description']); ?></p>
+    <div class="container content">
+        <h2>About</h2>
+        <div class="card">
+            <p><?php echo htmlspecialchars($portfolio['description']); ?></p>
+        </div>
     </div>
 </section>
 
 <section id="services" class="section">
-    <h2>Services</h2>
-    <div class="services-container" style="display: flex; flex-wrap: wrap; justify-content: center;">
-        <?php foreach (explode(',', $portfolio['services']) as $service): ?>
-            <div class="card">
-                <p><?php echo htmlspecialchars(trim($service)); ?></p>
-            </div>
-        <?php endforeach; ?>
+    <div class="container">
+        <h2>Services</h2>
+        <div class="flex-container">
+            <?php foreach (explode(',', $portfolio['services']) as $service): ?>
+                <div class="card">
+                    <p><?php echo htmlspecialchars(trim($service)); ?></p>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
 </section>
 
 <section id="projects" class="section">
-    <h2>Projects</h2>
-    <div class="projects" style="display: flex; flex-wrap: wrap; justify-content: center;">
-        <?php foreach ($projects as $project): ?>
-            <div class="card">
-                <p><a href="<?php echo htmlspecialchars($project); ?>" target="_blank"><?php echo htmlspecialchars($project); ?></a></p>
-            </div>
-        <?php endforeach; ?>
+    <div class="container">
+        <h2>Projects</h2>
+        <div class="flex-container">
+            <?php foreach ($projects as $project): ?>
+                <div class="card">
+                    <p><a href="<?php echo htmlspecialchars($project); ?>" target="_blank"><?php echo htmlspecialchars($project); ?></a></p>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
 </section>
 
 <section id="contact" class="section">
-    <h2>Contact Info</h2>
-    <div class="card">
-        <p><?php echo htmlspecialchars($portfolio['contact_info']); ?></p>
-    </div>
-    <div class="card">
+    <div class="container content">
+        <h2>Contact Info</h2>
+        <div class="card">
+            <p><?php echo htmlspecialchars($portfolio['contact_info']); ?></p>
+        </div>
         <h2>Gallery</h2>
         <div class="gallery">
             <?php foreach ($photos as $photo): ?>
